@@ -45,6 +45,7 @@ class Task extends \app\models\BaseModel
     const TYPE_DEVELOPMENT = 6;
     const TYPE_MADEFORMED  = 7;
     const TYPE_SYSTEM      = 8;
+    const TYPE_DOCS        = 9;
     const TYPE_OTHER       = 99;
 
     public $linkTypes = [
@@ -190,11 +191,12 @@ class Task extends \app\models\BaseModel
     public static function getTypeList()
     {
         return [
-            self::TYPE_APP => 'APP',
-            self::TYPE_OFFICE => 'OFFICE',
-            self::TYPE_WEB => 'WEB',
-            self::TYPE_SANDBOX => 'SANDBOX',
-            self::TYPE_WIDGET => 'Виджет',
+            self::TYPE_APP => 'Rnova APP',
+            self::TYPE_OFFICE => 'Rnova OFFICE',
+            self::TYPE_WEB => 'Rnova WEB',
+            self::TYPE_SANDBOX => 'Rnova SANDBOX',
+            self::TYPE_WIDGET => 'Rnova Виджет',
+            self::TYPE_DOCS => 'Rnova DOCS',
             self::TYPE_DEVELOPMENT => 'Разработка',
             self::TYPE_MADEFORMED => 'MadeForMed',
             self::TYPE_SYSTEM => 'Система',
