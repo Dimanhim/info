@@ -50,7 +50,7 @@ class Task extends \app\models\BaseModel
 
     public $linkTypes = [
         'office' => [
-            'types' => [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX],
+            'types' => [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS],
             'url' => 'https://office.rnova.org/issues/details?id=',
         ],
         'madeformed' => [

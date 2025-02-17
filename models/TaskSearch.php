@@ -50,6 +50,10 @@ class TaskSearch extends Task
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => ['defaultOrder' => ['status_id' => SORT_ASC, 'updated_at' => SORT_DESC, 'position' => SORT_ASC]],
+            'pagination' => [
+                'pageSize' => 50,
+            ],
+
         ]);
 
         $this->load($params);
