@@ -80,6 +80,10 @@ class TaskSearch extends Task
                     $query->andWhere(['>=', \Yii::$app->db->tablePrefix.'task_statuses.created_at', strtotime('-7 days')]);
                 }
                     break;
+                case 'custom-proccess' : {
+                    $this->status_id = [Task::STATUS_PROCESS];
+                }
+                    break;
             }
         }
 
@@ -95,11 +99,15 @@ class TaskSearch extends Task
             }
         }
 
+        if($this->status_id) {
+            $query->andFilterWhere(['in', 'status_id', $this->status_id]);
+        }
+
         // grid filtering conditions
         $query->andFilterWhere([
             $tableName.'.id' => $this->id,
             $tableName.'.type_id' => $this->type_id,
-            $tableName.'.status_id' => $this->status_id,
+            //$tableName.'.status_id' => $this->status_id,
             $tableName.'.is_active' => $this->is_active,
             $tableName.'.deleted' => $this->deleted,
             $tableName.'.position' => $this->position,

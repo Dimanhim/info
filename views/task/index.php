@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use himiklab\sortablegrid\SortableGridView;
 use kartik\widgets\DatePicker;
+use kartik\widgets\Select2;
 
 /** @var yii\web\View $this */
 /** @var app\models\TaskSearch $searchModel */
@@ -19,8 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('В работе', ['status' => 'custom-active'], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Активные', ['status' => 'custom-active'], ['class' => 'btn btn-warning']) ?>
         <?= Html::a('За неделю', ['status' => 'custom-done'], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('В работе', ['status' => 'custom-proccess'], ['class' => 'btn btn-warning']) ?>
     </p>
 
     <?= SortableGridView::widget([
@@ -61,7 +63,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->editStatusHtml();
                 },
                 'headerOptions' => ['style' => 'min-width: 150px;'],
-                'filter' => Task::getStatusList(),
+                'filter' => Select2::widget([
+                    'attribute' => 'status_id',
+                    'model' => $searchModel,
+                    'data' => Task::getStatusList(),
+                    'options' => [
+                        'multiple' => true
+                    ],
+                ]),
+                //'filter' => Task::getStatusList(),
             ],
             'price',
             [
