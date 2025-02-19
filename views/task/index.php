@@ -92,6 +92,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]),
             ],
             [
+                'attribute' => 'Посл. изм.',
+                'value' => function($data) {
+                    if($data->lastStatus) {
+                        return date('d.m.Y', $data->lastStatus->created_at);
+                    }
+                }
+            ],
+            [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Task $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);

@@ -15,7 +15,9 @@ if($data && $data['error'] == 0) {
         }
     }
 }*/
-$data = $api->getServiceCategories(['show_deleted' => true]);
+//$data = $api->getServiceCategories(['show_deleted' => true]);
+$data = $api->getAppointments(['appointment_id' => 21889861]);
+
 
 echo "<pre>";
 print_r($data);

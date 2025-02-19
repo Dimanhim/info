@@ -122,6 +122,10 @@ class Task extends \app\models\BaseModel
     {
         return $this->hasMany(TaskStatus::className(), ['task_id' => 'id']);
     }
+    public function getLastStatus()
+    {
+        return $this->hasOne(TaskStatus::className(), ['task_id' => 'id'])->orderBy(['created_at' => SORT_DESC]);
+    }
 
     /**
      * @return array

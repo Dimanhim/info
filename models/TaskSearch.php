@@ -76,7 +76,7 @@ class TaskSearch extends Task
                 }
                     break;
                 case 'custom-done' : {
-                    $query->joinWith('statuses');
+                    $query->joinWith('lastStatus');
                     $query->andWhere(['>=', \Yii::$app->db->tablePrefix.'task_statuses.created_at', strtotime('-7 days')]);
                 }
                     break;
