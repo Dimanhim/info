@@ -115,9 +115,12 @@ class TaskSearch extends Task
             $tableName.'.updated_at' => $this->updated_at,
         ]);
 
+        if($this->number) {
+            $query->andFilterWhere(['like', $tableName.'.number', $this->number])->orWhere(['like', $tableName.'.type_name', $this->number]);
+        }
+
         $query->andFilterWhere(['like', $tableName.'.unique_id', $this->unique_id])
             ->andFilterWhere(['like', $tableName.'.name', $this->name])
-            ->andFilterWhere(['like', $tableName.'.number', $this->number])
             ->andFilterWhere(['like', $tableName.'.tags', $this->tags])
             ->andFilterWhere(['like', $tableName.'.description', $this->description])
             ->andFilterWhere(['like', $tableName.'.comment', $this->comment]);
