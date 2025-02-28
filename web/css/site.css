@@ -161,15 +161,25 @@ a.desc:after {
 {
     background: #adffa9 !important;
 }
+.poo {
+    -webkit-border-radius: ;
+    -moz-border-radius: ;
+    border-radius: ;
+}
 .pale-blue,
 .pale-blue td
 {
-    background: #b0afff !important;
+    background: #979aff !important;
 }
 .pale-orange,
 .pale-orange td
 {
     background: #ffd586 !important;
+}
+.pale-purple,
+.pale-purple td
+{
+    background: #ff91c8 !important;
 }
 .change-status-select {
     border: none;

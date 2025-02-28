@@ -28,6 +28,7 @@ class Task extends \app\models\BaseModel
     const STATUS_PROCESS        = 2;
 
     const STATUS_INFO           = 3;
+    const STATUS_WAIT           = 4;
     const STATUS_COORDINATION   = 5;
     const STATUS_PAUSE          = 6;
 
@@ -136,6 +137,7 @@ class Task extends \app\models\BaseModel
             self::STATUS_NEW => 'Новый',
             self::STATUS_PROCESS => 'В процессе',
             self::STATUS_INFO => 'Требуется информация',
+            self::STATUS_WAIT => 'В ожидании',
             self::STATUS_COORDINATION => 'На согласовании',
             self::STATUS_PAUSE  => 'На паузе',
             self::STATUS_COMPLETED => 'Решен',
@@ -238,8 +240,9 @@ class Task extends \app\models\BaseModel
             case self::STATUS_NEW : return 'pale-red';
             case self::STATUS_PROCESS : return 'pale-green';
             case self::STATUS_INFO : return 'pale-orange';
+            case self::STATUS_WAIT : return 'pale-blue';
             case self::STATUS_COORDINATION : return 'pale-yellow';
-            case self::STATUS_PAUSE : return 'pale-blue';
+            case self::STATUS_PAUSE : return 'pale-purple';
             case self::STATUS_COMPLETED : return 'pale-grey';
             case self::STATUS_DONE : return 'pale-grey';
         }

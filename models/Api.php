@@ -24,7 +24,7 @@ class Api extends Model
 
         if(!isset($this->keys[$this->user])) throw new NotFoundHttpException('Не существуют данные апи для '.$user);
 
-        $this->request_url = $this->keys[$this->user]['url'] ?? 'https://app.rnova.org/api/public/' ;
+        $this->request_url = $this->keys[$this->user]['url'] ? $this->keys[$this->user]['url'].'/api/public/' : 'https://app.rnova.org/api/public/' ;
         $this->apiKey = $this->keys[$this->user]['apiKey'];
         $this->api = new RnovaApi($this->request_url, $this->apiKey);
     }

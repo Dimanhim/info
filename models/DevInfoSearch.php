@@ -39,12 +39,13 @@ class DevInfoSearch extends DevInfo
      */
     public function search($params)
     {
-        $query = DevInfo::findModels();
+        $query = DevInfo::find()->where(['is', 'deleted', null])->andWhere(['is_active' => 1]);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC, 'position' => SORT_ASC]],
         ]);
 
         $this->load($params);
