@@ -33,7 +33,8 @@ class ApiController extends Controller
 
     public function actionIndex()
     {
-        $api = new Api('dolgoletie');
+//        $api = new Api('altermedica');
+        $api = new Api('dima-t-main');
 
         return $this->render('index', [
             'api' => $api,
