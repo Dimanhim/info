@@ -25,6 +25,8 @@ class Gallery extends BaseModel
     const TYPE_DEV_INFO              = 1;
     const TYPE_ACCESS                = 2;
     const TYPE_TASK                  = 3;
+    const TYPE_PROJECT               = 4;
+    const TYPE_VCS                   = 5;
 
 
     const TYPE_ANY                   = 99;

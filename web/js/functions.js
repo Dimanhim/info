@@ -21,4 +21,7 @@ var functions = {
                 }, 1000)
             });
     },
+    displaySuccessMessage: function(elem) {
+        toastr.success(elem)
+    }
 };

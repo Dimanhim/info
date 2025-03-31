@@ -55,6 +55,18 @@ use kartik\widgets\DatePicker;
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        VCS
+                    </div>
+                    <div class="card-body">
+                        <?//= $model->vcsHtml() ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
                         Теги
                     </div>
                     <div class="card-body">
@@ -62,6 +74,8 @@ use kartik\widgets\DatePicker;
                     </div>
                 </div>
             </div>
+
+
         </div>
         <div class="row">
             <div class="col-md-6">

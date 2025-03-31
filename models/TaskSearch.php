@@ -70,9 +70,14 @@ class TaskSearch extends Task
 
         if($status) {
             switch ($status) {
-                case 'custom-active' : {
-                    $query->andFilterWhere(['not in', $tableName.'.status_id', Task::STATUS_DONE]);
-                    $query->andFilterWhere(['not in', $tableName.'.status_id', Task::STATUS_COMPLETED]);
+                case 'custom-active-rnova' : {
+                    $query->andWhere(['not in', $tableName.'.status_id', Task::getInactiveStatuses()]);
+                    $query->andWhere(['in', $tableName.'.type_id', Task::rnovaTypes()]);
+                }
+                    break;
+                case 'custom-active-dev' : {
+                    $query->andWhere(['not in', $tableName.'.status_id', Task::getInactiveStatuses()]);
+                    $query->andWhere(['not in', $tableName.'.type_id', Task::rnovaTypes()]);
                 }
                     break;
                 case 'custom-done' : {

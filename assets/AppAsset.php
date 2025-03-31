@@ -42,6 +42,7 @@ class AppAsset extends AssetBundle
             'css/bootstrap-icons.css',
             'css/jquery-ui.min.css',
             'css/jquery.fancybox.min.css',
+            'css/toastr.min.css',
             'jstree/themes/default/style.min.css',
             'css/site.css',
             'css/admin.css',
@@ -55,8 +56,10 @@ class AppAsset extends AssetBundle
             'js/jquery.fancybox.min.js',
             'jstree/jstree.min.js',
             'js/jstree-actions.min.js',
+            'js/toastr.min.js',
             'js/functions.js?v=' . mt_rand(1000,10000),
             'js/common.js?v=' . mt_rand(1000,10000),
+            'js/vcs.js?v=' . mt_rand(1000,10000),
         ];
     }
 }

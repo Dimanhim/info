@@ -31,6 +31,7 @@ class Task extends \app\models\BaseModel
     const STATUS_WAIT           = 4;
     const STATUS_COORDINATION   = 5;
     const STATUS_PAUSE          = 6;
+    const STATUS_ARCHIVE        = 7;
 
 
 
@@ -52,7 +53,7 @@ class Task extends \app\models\BaseModel
 
     public $linkTypes = [
         'office' => [
-            'types' => [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS],
+            'types' => [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS, self::TYPE_SUPPORT],
             'url' => 'https://office.rnova.org/issues/details?id=',
         ],
         'madeformed' => [
@@ -60,6 +61,14 @@ class Task extends \app\models\BaseModel
             'url' => 'https://madeformed.bitrix24.ru/workgroups/group/5/tasks/task/view/'
         ]
     ];
+
+    /**
+     * @return array
+     */
+    public static function rnovaTypes()
+    {
+        return [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS, self::TYPE_SUPPORT];
+    }
 
     /**
      * {@inheritdoc}
@@ -132,6 +141,14 @@ class Task extends \app\models\BaseModel
     /**
      * @return array
      */
+    public static function getInactiveStatuses()
+    {
+        return [self::STATUS_COMPLETED, self::STATUS_DONE, self::STATUS_ARCHIVE];
+    }
+
+    /**
+     * @return array
+     */
     public static function getStatusList()
     {
         return [
@@ -141,6 +158,7 @@ class Task extends \app\models\BaseModel
             self::STATUS_WAIT => 'В ожидании',
             self::STATUS_COORDINATION => 'На согласовании',
             self::STATUS_PAUSE  => 'На паузе',
+            self::STATUS_ARCHIVE  => 'Архив',
             self::STATUS_COMPLETED => 'Решен',
             self::STATUS_DONE => 'Завершен',
         ];
@@ -289,5 +307,27 @@ class Task extends \app\models\BaseModel
             return Html::a($str, $link, ['target' => '_blanc', 'class' => 'url_link']);
         }
         return $str;
+    }
+
+    public function vcsHtml()
+    {
+        return Yii::$app->controller->renderPartial('//task/_vcs', [
+            'model' => $this
+        ]);
+    }
+
+    public function vcsFormHtml()
+    {
+
+    }
+
+    public function vcsFormBranchesHtml()
+    {
+
+    }
+
+    public function vcsFormActionsBranchesHtml()
+    {
+
     }
 }
