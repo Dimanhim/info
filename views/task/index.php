@@ -11,20 +11,14 @@ use kartik\widgets\Select2;
 /** @var yii\web\View $this */
 /** @var app\models\TaskSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
-
+$this->title = $searchModel->modelName;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('Активные Rnova', ['status' => 'custom-active-rnova'], ['class' => 'btn btn-warning']) ?>
-        <?= Html::a('Активные Разраб', ['status' => 'custom-active-dev'], ['class' => 'btn btn-warning']) ?>
-        <?= Html::a('За неделю', ['status' => 'custom-done'], ['class' => 'btn btn-warning']) ?>
-        <?= Html::a('В работе', ['status' => 'custom-proccess'], ['class' => 'btn btn-warning']) ?>
-    </p>
+    <?= $this->render('_submenu') ?>
 
     <?= SortableGridView::widget([
         'dataProvider' => $dataProvider,

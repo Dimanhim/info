@@ -22,7 +22,7 @@ use yii\helpers\Html;
  * @property int|null $created_at
  * @property int|null $updated_at
  */
-class Task extends \app\models\BaseModel
+class Task extends BaseModel
 {
     const STATUS_NEW            = 1;
     const STATUS_PROCESS        = 2;

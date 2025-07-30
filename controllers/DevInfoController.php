@@ -22,12 +22,7 @@ class DevInfoController extends BaseController
             parent::behaviors(),
             [
                 'className' => DevInfo::className(),
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
+
             ]
         );
     }
