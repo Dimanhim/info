@@ -49,7 +49,13 @@ class Api extends Model
 
     public function getAppointments($params = [])
     {
-        $data = $this->api->getRequest('getAppointments', $params);
+        $data = $this->api->getRequest('v2/getAppointments', $params);
+        return $data;
+    }
+
+    public function getInvoices($params = [])
+    {
+        $data = $this->api->getRequest('v2/getInvoices', $params);
         return $data;
     }
 

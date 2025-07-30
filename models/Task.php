@@ -49,6 +49,7 @@ class Task extends \app\models\BaseModel
     const TYPE_SYSTEM      = 8;
     const TYPE_DOCS        = 9;
     const TYPE_SUPPORT     = 10;
+    const TYPE_ACC         = 40;
     const TYPE_OTHER       = 99;
 
     public $linkTypes = [
@@ -226,6 +227,7 @@ class Task extends \app\models\BaseModel
             self::TYPE_DEVELOPMENT => 'Разработка',
             self::TYPE_MADEFORMED => 'MadeForMed',
             self::TYPE_SYSTEM => 'Система',
+            self::TYPE_ACC => 'Accounting',
             self::TYPE_OTHER => 'Разное',
         ];
     }
