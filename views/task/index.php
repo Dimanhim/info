@@ -12,7 +12,7 @@ use kartik\widgets\Select2;
 /** @var app\models\TaskSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 $this->title = $searchModel->modelName;
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 ?>
 <div class="task-index">
 

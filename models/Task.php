@@ -54,7 +54,7 @@ class Task extends BaseModel
 
     public $linkTypes = [
         'office' => [
-            'types' => [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS, self::TYPE_SUPPORT],
+            'types' => [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS, self::TYPE_SUPPORT, self::TYPE_MADEFORMED],
             'url' => 'https://office.rnova.org/issues/details?id=',
         ],
         'madeformed' => [
@@ -68,7 +68,7 @@ class Task extends BaseModel
      */
     public static function rnovaTypes()
     {
-        return [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS, self::TYPE_SUPPORT];
+        return [self::TYPE_APP, self::TYPE_OFFICE, self::TYPE_WEB, self::TYPE_SANDBOX, self::TYPE_DOCS, self::TYPE_SUPPORT, self::TYPE_MADEFORMED];
     }
 
     /**
@@ -303,9 +303,9 @@ class Task extends BaseModel
 
         if($linkName = $this->isLink()) {
             $link = $linkName.trim($this->number);
-            if($this->type_id == self::TYPE_MADEFORMED) {
+            /*if($this->type_id == self::TYPE_MADEFORMED) {
                 $link .= '/';
-            }
+            }*/
             return Html::a($str, $link, ['target' => '_blanc', 'class' => 'url_link']);
         }
         return $str;

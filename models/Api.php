@@ -53,6 +53,12 @@ class Api extends Model
         return $data;
     }
 
+    public function getAppointmentServices($params = [])
+    {
+        $data = $this->api->getRequest('v2/getAppointmentServices', $params);
+        return $data;
+    }
+
     public function getInvoices($params = [])
     {
         $data = $this->api->getRequest('v2/getInvoices', $params);
@@ -77,4 +83,20 @@ class Api extends Model
         return $data;
     }
 
+    public function getCancellationReasons($params = [])
+    {
+        $data = $this->api->getRequest('getCancellationReasons', $params);
+        return $data;
+    }
+
+    public function getSchedulePeriods($params = [])
+    {
+        $data = $this->api->getRequest('getSchedulePeriods', $params);
+        return $data;
+    }
+    public function getServices($params = [])
+    {
+        $data = $this->api->getRequest('getServices', $params);
+        return $data;
+    }
 }
