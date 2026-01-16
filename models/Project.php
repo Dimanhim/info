@@ -57,7 +57,7 @@ class Project extends \app\models\BaseModel
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [['type_id'], 'integer'],
+            [['type_id', 'folder_id'], 'integer'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 255],
         ]);
@@ -70,9 +70,15 @@ class Project extends \app\models\BaseModel
     {
         return array_merge(parent::attributeLabels(), [
             'type_id' => 'Тип',
+            'folder_id' => 'Доступы',
             'name' => 'Название',
             'description' => 'Описание',
         ]);
+    }
+
+    public function getFolder()
+    {
+        return $this->hasOne(Folder::className(), ['id' => 'folder_id']);
     }
 
     /**

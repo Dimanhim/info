@@ -4,6 +4,7 @@ use app\models\Task;
 use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Folder;
 
 /** @var yii\web\View $this */
 /** @var app\models\Project $model */
@@ -28,6 +29,7 @@ use yii\widgets\ActiveForm;
                         ],
                     ]) ?>
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'folder_id')->dropDownList(Folder::getFolders(), ['prompt' => '[Не выбрано]']) ?>
                     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
                     <?= $form->field($model, 'is_active')->checkbox() ?>
                 </div>

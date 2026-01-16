@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\AccessSearch;
 use app\models\Task;
 use app\models\TaskSearch;
 use yii\web\Controller;
@@ -87,13 +88,23 @@ class TaskController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $searchModel = null;
+        $dataProvider = null;
+        $folderId = $model->project->folder_id ?? null;
+        if($folderId) {
+            $searchModel = new AccessSearch();
+            $searchModel->folder_id = $folderId;
+            $dataProvider = $searchModel->search(null);
+        }
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['update', 'id' => $model->id]);
+            return $this->redirect(['update', 'id' => $model->id, 'searchModel' => $searchModel, 'dataProvider' => $dataProvider]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
         ]);
     }
 }

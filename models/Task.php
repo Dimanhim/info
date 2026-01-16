@@ -101,7 +101,7 @@ class Task extends BaseModel
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [['type_id', 'status_id', 'price'], 'integer'],
+            [['type_id', 'status_id', 'price', 'project_id'], 'integer'],
             [['description', 'comment'], 'string'],
             [['number', 'name', 'tags', 'type_name'], 'string', 'max' => 255],
             [['payment_date'], 'safe'],
@@ -116,6 +116,7 @@ class Task extends BaseModel
         return array_merge(parent::attributeLabels(), [
             'type_id' => 'Тип',
             'type_name' => 'Вид',
+            'project_id' => 'Проект',
             'number' => 'Номер',
             'name' => 'Название',
             'description' => 'Описание',
@@ -225,11 +226,16 @@ class Task extends BaseModel
             self::TYPE_DOCS => 'Rnova DOCS',
             self::TYPE_SUPPORT => 'Rnova Поддержка',
             self::TYPE_DEVELOPMENT => 'Разработка',
-            self::TYPE_MADEFORMED => 'MadeForMed',
+            self::TYPE_MADEFORMED => 'Rnova сервисы',
             self::TYPE_SYSTEM => 'Система',
             self::TYPE_ACC => 'Accounting',
             self::TYPE_OTHER => 'Разное',
         ];
+    }
+
+    public function getProject()
+    {
+        return $this->hasOne(Project::class, ['id' => 'project_id']);
     }
 
     /**

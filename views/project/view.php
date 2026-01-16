@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 /** @var app\models\Project $model */
@@ -44,6 +45,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             'name',
+            [
+                'attribute' => 'folder_id',
+                'format' => 'raw',
+                'value' => function($data) {
+                    if($folder = $data->folder) {
+                        return Html::a($folder->name, Url::to(['/', 'AccessSearch[folder_id]' => $folder->id]), ['target' => '_blank']);
+                    }
+                }
+            ],
             'description:ntext',
             'is_active:boolean',
             [

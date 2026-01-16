@@ -42,6 +42,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Task::getTypeList(),
             ],
             'name',
+            [
+                    'attribute' => 'folder_id',
+                    'format' => 'raw',
+                    'value' => function($data) {
+                        if($folder = $data->folder) {
+                            return Html::a($folder->name, Url::to(['/', 'AccessSearch[folder_id]' => $folder->id]), ['target' => '_blank']);
+                        }
+                    }
+            ],
             'description:ntext',
             [
                 'class' => ActionColumn::className(),

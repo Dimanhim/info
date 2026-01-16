@@ -1,10 +1,13 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
 use app\models\Task;
 use kartik\widgets\DatePicker;
+use app\models\Project;
+use yii\grid\GridView;
 
 /** @var yii\web\View $this */
 /** @var app\models\Task $model */
@@ -30,6 +33,7 @@ use kartik\widgets\DatePicker;
                         ]) ?>
                         <?= $form->field($model, 'number')->textInput() ?>
                         <?= $form->field($model, 'type_name')->textInput() ?>
+                        <?= $form->field($model, 'project_id')->dropDownList(Project::getList(), ['prompt' => '[Не выбрано]']) ?>
                         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
                         <?= $form->field($model, 'status_id')->widget(Select2::className(), [
@@ -51,18 +55,70 @@ use kartik\widgets\DatePicker;
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        VCS
-                    </div>
-                    <div class="card-body">
-                        <?//= $model->vcsHtml() ?>
+        <?php if($dataProvider && $searchModel) : ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Доступы
+                        </div>
+                        <div class="card-body">
+
+                            <?= GridView::widget([
+                                    'dataProvider' => $dataProvider,
+                                    'filterModel' => $searchModel,
+                                    'columns' => [
+                                            ['class' => 'yii\grid\SerialColumn'],
+
+                                            'name',
+                                            [
+                                                    'attribute' => 'folder_id',
+                                                    'format' => 'raw',
+                                                    'value' => function($data) {
+                                                        if($folder = $data->folder) {
+                                                            return Html::a($data->fullName, ['folder/view', 'id' => $folder->id]);
+                                                        }
+                                                    },
+                                                    'filter' => false,
+                                            ],
+                                            [
+                                                    'attribute' => 'login',
+                                                    'format' => 'raw',
+                                                    'value' => function($data) {
+                                                        return $data->getCopyLink('login');
+                                                    }
+                                            ],
+                                            [
+                                                    'attribute' => 'password',
+                                                    'format' => 'raw',
+                                                    'value' => function($data) {
+                                                        return $data->getCopyLink('password', true);
+                                                    }
+                                            ],
+                                            [
+                                                    'attribute' => 'url',
+                                                    'format' => 'raw',
+                                                    'value' => function($data) {
+                                                        return $data->getCopyLink('url');
+                                                    }
+                                            ],
+                                            [
+                                                    'attribute' => 'host',
+                                                    'format' => 'raw',
+                                                    'value' => function($data) {
+                                                        return $data->getCopyLink('host');
+                                                    }
+                                            ],
+                                            'comment',
+
+                                    ],
+                            ]); ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
