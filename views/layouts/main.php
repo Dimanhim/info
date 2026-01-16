@@ -42,11 +42,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Доступы', 'url' => ['/']],
             ['label' => 'Папки', 'url' => ['/folder/index']],
             ['label' => 'Информация', 'url' => ['/dev-info/index']],
-            ['label' => 'Таск', 'items' => [
-                ['label' => 'Таск', 'url' => '/task/index'],
-                ['label' => 'Проекты', 'url' => '/project/index'],
-                ['label' => 'Vcs', 'url' => '/vcs/index'],
-            ]],
+            ['label' => 'Таск', 'url' => '/task/index'],
+            ['label' => 'Проекты', 'url' => '/project/index'],
             ['label' => 'База', 'url' => 'https://cp.jino.ru/hosting/a/8d99b/management/mysql/pma/?pma-login=046632014_info', ['options' => ['target' => '_blanc']]],
             ['label' => 'База тестовая', 'url' => 'https://cp.jino.ru/hosting/a/8d99b/management/mysql/pma/?pma-login=046632014_test', ['options' => ['target' => '_blanc']]],
             ['label' => 'АПИ', 'url' => ['/api/index']],
