@@ -156,4 +156,19 @@ $(document).ready(function() {
             console.log(res);
         });
     }
+
+    $(document).on('click', '.card-header-icon-o', function(e) {
+        e.preventDefault();
+        toogleAccesses();
+    })
+
+    function toogleAccesses() {
+        let accessesList = $('.card-body-access-o');
+        if(accessesList.hasClass('showed')) {
+            accessesList.removeClass('showed')
+        }
+        else {
+            accessesList.addClass('showed')
+        }
+    }
 })

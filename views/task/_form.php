@@ -59,10 +59,13 @@ use yii\grid\GridView;
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            Доступы
+                        <div class="card-header card-header-icon card-header-icon-o">
+                            <div>Доступы</div>
+                            <div style="margin-left:auto">
+                                <i class="bi bi-arrow-down"></i>
+                            </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body card-body-access card-body-access-o">
 
                             <?= GridView::widget([
                                     'dataProvider' => $dataProvider,

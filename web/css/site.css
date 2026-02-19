@@ -182,3 +182,16 @@ a.desc:after {
 .url_link {
     text-decoration: none;
 }
+.card-header-icon
+{
+    cursor: pointer;
+    display: flex;
+}
+.card-body-access
+{
+    display: none;
+}
+.card-body-access.showed
+{
+    display: block;
+}

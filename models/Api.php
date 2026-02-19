@@ -105,4 +105,10 @@ class Api extends Model
         $data = $this->api->getRequest('getServices', $params);
         return $data;
     }
+
+    public function getPayers($params = [])
+    {
+        $data = $this->api->getRequest('getPayers', $params);
+        return $data;
+    }
 }
