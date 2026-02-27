@@ -89,7 +89,7 @@ class AccessController extends BaseController
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(\Yii::$app->request->referrer);
+            return $this->redirect(['access/index', 'folder' => $model->folder_id]);
         }
 
         return $this->render('update', [

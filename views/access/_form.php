@@ -10,11 +10,12 @@ use app\models\Folder;
 ?>
 
 <div class="access-form">
+    <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <?php $form = ActiveForm::begin(); ?>
+
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'folder_id')->dropDownList(Folder::getFolders(), ['prompt' => '[Не выбрано]']) ?>
                     <?= $form->field($model, 'login')->textInput(['maxlength' => true]) ?>
@@ -27,11 +28,14 @@ use app\models\Folder;
                         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
                     </div>
 
-                    <?php ActiveForm::end(); ?>
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <?= $model->getImagesField($form) ?>
+        </div>
     </div>
+    <?php ActiveForm::end(); ?>
 
 
 
