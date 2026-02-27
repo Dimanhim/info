@@ -195,3 +195,8 @@ a.desc:after {
 {
     display: block;
 }
+.project-link
+{
+    padding: 10px;
+    background: #ccc;
+}

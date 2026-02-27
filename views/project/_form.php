@@ -29,6 +29,7 @@ use app\models\Folder;
                         ],
                     ]) ?>
                     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'site')->textInput(['maxlength' => true]) ?>
                     <?= $form->field($model, 'folder_id')->dropDownList(Folder::getFolders(), ['prompt' => '[Не выбрано]']) ?>
                     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
                     <?= $form->field($model, 'is_active')->checkbox() ?>

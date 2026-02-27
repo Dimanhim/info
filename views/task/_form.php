@@ -34,6 +34,16 @@ use yii\grid\GridView;
                         <?= $form->field($model, 'number')->textInput() ?>
                         <?= $form->field($model, 'type_name')->textInput() ?>
                         <?= $form->field($model, 'project_id')->dropDownList(Project::getList(), ['prompt' => '[Не выбрано]']) ?>
+
+                        <?php if($model->project && $model->project->site) : ?>
+                            <div class="form-group">
+                                <div class="project-link">
+                                    <?= $model->project->getFullLinkHtml() ?>
+                                </div>
+                            </div>
+                        <?php endif;; ?>
+
+
                         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
                         <?= $form->field($model, 'status_id')->widget(Select2::className(), [

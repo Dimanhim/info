@@ -43,6 +43,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             [
+                'attribute' => 'site',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return $data->getFullLinkHtml();
+                }
+            ],
+            [
                     'attribute' => 'folder_id',
                     'format' => 'raw',
                     'value' => function($data) {

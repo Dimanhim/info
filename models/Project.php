@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "info_projects".
@@ -59,7 +60,7 @@ class Project extends \app\models\BaseModel
         return array_merge(parent::rules(), [
             [['type_id', 'folder_id'], 'integer'],
             [['description'], 'string'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'site'], 'string', 'max' => 255],
         ]);
     }
 
@@ -72,6 +73,7 @@ class Project extends \app\models\BaseModel
             'type_id' => 'Тип',
             'folder_id' => 'Доступы',
             'name' => 'Название',
+            'site' => 'Сайт',
             'description' => 'Описание',
         ]);
     }
@@ -88,5 +90,15 @@ class Project extends \app\models\BaseModel
     {
         $types = Task::getTypeList();
         return $types[$this->type_id] ?? null;
+    }
+
+    public function getFullLinkHtml()
+    {
+        if($this->site) {
+            $str = Html::a($this->site, ['#'], ['class' => 'copy__str', 'data-value' => $this->site]);;
+            $str .= Html::a('Перейти', $this->site, ['class' => 'btn btn-primary', 'target' => '_blank']);
+            return $str;
+        }
+        return null;
     }
 }
